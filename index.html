@@ -2,10 +2,52 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Meu Site</title>
+  <title>Upload de Arquivos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    input {
+      margin: 20px;
+    }
+
+    .info {
+      margin-top: 20px;
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-  <h1>🔥 Meu site no GitHub Pages 🔥</h1>
-  <p>Funcionando!</p>
+
+  <h1>📁 Enviar Arquivo</h1>
+
+  <input type="file" id="fileInput">
+
+  <div class="info" id="info"></div>
+
+  <script>
+    const input = document.getElementById("fileInput");
+    const info = document.getElementById("info");
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+
+      info.innerHTML = `
+        <p><b>Nome:</b> ${file.name}</p>
+        <p><b>Tamanho:</b> ${(file.size / 1024).toFixed(2)} KB</p>
+        <p><b>Tipo:</b> ${file.type}</p>
+      `;
+    });
+  </script>
+
 </body>
 </html>
+
